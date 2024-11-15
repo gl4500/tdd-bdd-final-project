@@ -31,4 +31,32 @@ class ProductFactory(factory.Factory):
         model = Product
 
     id = factory.Sequence(lambda n: n)
-   ## Add code to create Fake Products 
+    name = FuzzyChoice(
+        choices=[
+            "hat",
+            "Pants",
+            "Shirt",
+            "Apple",
+            "Banana",
+            "Hammer",
+            "Pots",
+            "towels",
+            "Toyota",
+            "Chevy",
+            "Steak",
+            "Screwdriver",
+            ]
+        )
+    description = factory.Faker("text")
+    price = FuzzyDecimal(.5, 2000.0, 2)
+    available = FuzzyChoice(choices=[True, False])
+    category = FuzzyChoice(
+        choices=[
+            Category.UNKNOWN,
+            Category.CLOTHS,
+            Category.FOOD,
+            Category.HOUSEWARES,
+            Category.AUTOMOTIVE,
+            Category.TOOLS
+            ]
+        )
