@@ -111,6 +111,7 @@ def list_products():
     app.logger.info("Request to list Products...")
 
     products = []
+    products = Product.all()
     name = request.args.get("name")
     category = request.args.get("category")
     available = request.args.get("available")
